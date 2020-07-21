@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { WeatherForecast } from '../models/interfaces/weather-forecast.interface';
 import { FetchDataService } from '../services/fetch-data.service';
 
@@ -8,16 +8,7 @@ import { FetchDataService } from '../services/fetch-data.service';
   styleUrls: ['./test.component.css']
 })
 export class TestComponent {
-  public forecasts: WeatherForecast[];
 
+  @Input() forecasts: WeatherForecast[];
 
-  constructor(private fetchDataService: FetchDataService) {
-
-  }
-
-  ngOnInit() {
-    this.fetchDataService.getHttp().subscribe(result => {
-      this.forecasts = result as WeatherForecast[];
-    }, error => console.error(error));
-  };
 }
