@@ -1,4 +1,4 @@
 <div *ngFor="let forecast of forecasts" class="myDiv">
-  Summary : {{forecast.summary}},
+  Summary : <button (click)="change(true)">{{forecast.summary}}, </button>
 </div>
 

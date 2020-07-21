@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { WeatherForecast } from '../models/interfaces/weather-forecast.interface';
 import { FetchDataService } from '../services/fetch-data.service';
+import { MessageService } from '../services/message.service ';
 
 @Component({
   selector: 'app-test',
@@ -9,6 +10,14 @@ import { FetchDataService } from '../services/fetch-data.service';
 })
 export class TestComponent {
 
+  constructor(private messageService: MessageService) { }
+
   @Input() forecasts: WeatherForecast[];
+
+  @Output() onChanged = new EventEmitter<boolean>();
+  change(increased: any) {
+    this.onChanged.emit(increased);
+    this.messageService.sendMessage(increased);
+  }
 
 }

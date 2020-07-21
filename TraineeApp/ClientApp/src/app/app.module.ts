@@ -11,6 +11,8 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { TestComponent } from './test/test.component';
 import { FetchDataService } from './services/fetch-data.service';
+import { MessageService } from './services/message.service ';
+import { HighlightDirective } from './directives/appHighlight.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { FetchDataService } from './services/fetch-data.service';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    TestComponent
+    TestComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,7 +34,7 @@ import { FetchDataService } from './services/fetch-data.service';
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [FetchDataService],
+  providers: [FetchDataService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

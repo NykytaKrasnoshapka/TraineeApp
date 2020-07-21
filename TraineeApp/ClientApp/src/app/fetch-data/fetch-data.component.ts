@@ -13,12 +13,19 @@ export class FetchDataComponent {
   constructor(private fetchDataService: FetchDataService) {
 
   }
+  status: boolean = false;
+
 
   ngOnInit() {
     this.fetchDataService.getHttp().subscribe(result => {
       this.forecasts = result as WeatherForecast[];
     }, error => console.error(error));
-    };
+  };
+
+  onChanged(increased: any) {
+    status=increased;
+  }
+
   }
 
 
