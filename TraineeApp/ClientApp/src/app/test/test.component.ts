@@ -14,8 +14,8 @@ export class TestComponent {
 
   @Input() forecasts: WeatherForecast[];
 
-  @Output() onChanged = new EventEmitter<boolean>();
-  change(increased: any) {
+  @Output() onChanged = new EventEmitter<string>();
+  change(increased: string) {
     this.onChanged.emit(increased);
     this.messageService.sendMessage(increased);
   }

@@ -9,7 +9,6 @@ import { Observable, Subscription } from 'rxjs';
 export class HighlightDirective {
 
   @Input('appHighlight') status: boolean;
-  statusA: boolean;
 
   messages: any[] = [];
   subscription: Subscription;
@@ -17,10 +16,12 @@ export class HighlightDirective {
 
   constructor(private el: ElementRef, private renderer: Renderer2, private messageService: MessageService) {
     this.subscription = this.messageService.getMessage().subscribe(message => {
-      if (message) {
-        el.nativeElement.style.backgroundColor = 'yellow';
-        const child = document.createElement('checkbox');
-        this.renderer.appendChild(this.el.nativeElement.getElementById(), child);
+      if (message && el.nativeElement.id == message) {
+        //el.nativeElement.style.backgroundColor = 'yellow';
+        const child = document.createElement('INPUT');
+        child.setAttribute("type", "checkbox");
+
+        this.renderer.appendChild(this.el.nativeElement, child);
       }
     });
   }
