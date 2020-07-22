@@ -18,8 +18,8 @@
       <td>{{ forecast.date }}</td>
       <td>{{ forecast.temperatureC }}</td>
       <td>{{ forecast.temperatureF }}</td>
-      <td id="{{forecast.summary}}" appHighlight>{{ forecast.summary }}</td>
+      <td><button class="{{ forecast.summary }}" type="button" (click)="onClick(forecast.summary)">{{ forecast.summary }}</button></td>
     </tr>
   </tbody>
 </table>
-<app-test (onChanged)="onChanged($event)" [forecasts]='forecasts'></app-test>
+<app-test [forecasts]='forecasts'></app-test>

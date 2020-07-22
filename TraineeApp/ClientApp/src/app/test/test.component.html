@@ -1,4 +1,4 @@
-<div *ngFor="let forecast of forecasts" class="myDiv">
-  Summary : <button (click)="change(forecast.summary)">{{forecast.summary}}, </button>
+<div id="{{forecast.summary}}" *ngFor="let forecast of forecasts" class="summaryStyle">
+  Summary :{{forecast.summary}}
 </div>
 

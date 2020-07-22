@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { WeatherForecast } from '../models/interfaces/weather-forecast.interface';
 import { FetchDataService } from '../services/fetch-data.service';
 import { MessageService } from '../services/message.service ';
@@ -14,10 +14,8 @@ export class TestComponent {
 
   @Input() forecasts: WeatherForecast[];
 
-  @Output() onChanged = new EventEmitter<string>();
-  change(increased: string) {
-    this.onChanged.emit(increased);
-    this.messageService.sendMessage(increased);
+  changeStyle(summary: string) {
+    this.forecasts.forEach(element =>
+      document.getElementById(summary).style.color = "blue");
   }
-
 }
